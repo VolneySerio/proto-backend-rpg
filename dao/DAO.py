@@ -1,19 +1,22 @@
-import traceback
-import psycopg2
+# dao/DAO.py
+from database.connection import criar_conexao
 
-
-class DAO(object):
-    def __init__(self):
-        self.connection_params = {}
-        
-    def executar_query(self, query, params=None, fetch=False, fetchone=False):
+class DAO:
+    def executar_query(self, query, parametros=None, fetch=False, fetchone=False):
+       
+        conexao = None
+        cursor = None
         resultado = None
-        connection = None
+        
         try:
-            connection = psycopg2.connect(**self.connection_params)
-            cursor = connection.cursor()
-            if params:
-                cursor.execute(query, params)
+            conexao = criar_conexao()
+            if conexao is None:
+                return None
+                
+            cursor = conexao.cursor()
+            
+            if parametros:
+                cursor.execute(query, parametros)
             else:
                 cursor.execute(query)
             
@@ -22,14 +25,19 @@ class DAO(object):
             elif fetchone:
                 resultado = cursor.fetchone()
             else:
-                connection.commit()
+                conexao.commit()
                 resultado = cursor.rowcount
+                
+        except Exception as e:
+            if conexao:
+                conexao.rollback()
+            print(f"Erro na query: {e}")
+            raise e
             
-            cursor.close()
-        except (Exception, psycopg2.Error) as error:
-            traceback.print_exc()
-            resultado = None
         finally:
-            if connection:
-                connection.close()
+            if cursor:
+                cursor.close()
+            if conexao:
+                conexao.close()
+                
         return resultado

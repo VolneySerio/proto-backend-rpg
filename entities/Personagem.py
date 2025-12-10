@@ -1,4 +1,5 @@
 class Personagem(object):
+    
     @property
     def codigo(self):
         return self._codigo
