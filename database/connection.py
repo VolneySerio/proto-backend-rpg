@@ -1,4 +1,3 @@
-# database/connection.py
 import psycopg2
 from psycopg2 import Error
 import config

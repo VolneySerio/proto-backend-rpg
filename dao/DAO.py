@@ -1,4 +1,3 @@
-# dao/DAO.py
 from database.connection import criar_conexao
 
 class DAO:

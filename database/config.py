@@ -1,4 +1,3 @@
-# config.py
 DB_HOST = 'localhost'
 DB_NAME = 'mesa_rpg'  
 DB_USER = 'postgres'  
