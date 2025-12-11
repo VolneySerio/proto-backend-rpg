@@ -1,4 +1,4 @@
-from DAO import DAO
+from .DAO import DAO
 from entities.Mesa import Mesa
 
 class MesaDAO(DAO):
@@ -54,7 +54,4 @@ class MesaDAO(DAO):
     def remover(self, codigo):
         query = "DELETE FROM mesa WHERE codigo = %s"
         return self.executar_query(query, (codigo, ))
-    
-
-print(MesaDAO)
         
