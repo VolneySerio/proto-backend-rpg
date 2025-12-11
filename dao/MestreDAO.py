@@ -1,4 +1,4 @@
-from DAO import DAO
+from .DAO import DAO
 from entities.Mestre import Mestre
 
 class MestreDAO(DAO):

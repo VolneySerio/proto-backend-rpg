@@ -1,5 +1,5 @@
 DB_HOST = 'localhost'
-DB_NAME = 'mesa_rpg'  
+DB_NAME = 'sgdRpg'  
 DB_USER = 'postgres'  
-DB_PASSWORD = 'sua_senha'
+DB_PASSWORD = 'asdasd'
 DB_PORT = 5432 

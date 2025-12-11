@@ -29,4 +29,4 @@ CREATE TABLE personagem (
     codigo_jogador INTEGER REFERENCES jogador(codigo),
     codigo_mesa INTEGER REFERENCES mesa(codigo)
 );
-```
+

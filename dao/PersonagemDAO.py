@@ -1,4 +1,4 @@
-from DAO import DAO
+from .DAO import DAO
 from entities.Personagem import Personagem
 
 class PersonagemDAO(DAO):

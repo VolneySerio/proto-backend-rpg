@@ -1,6 +1,6 @@
 import psycopg2
 from psycopg2 import Error
-import config
+from . import config
 
 def criar_conexao():
 
@@ -12,6 +12,7 @@ def criar_conexao():
             password=config.DB_PASSWORD,
             port=config.DB_PORT  
         )
+        print("Banco conectado!")
         return conexao
     except Error as e:
         print(f"Erro ao conectar ao PostgreSQL: {e}")
